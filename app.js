@@ -5,7 +5,7 @@ if(process.env.NODE_ENV != "production")
 const express=require("express");
 const mongoose=require("mongoose");
 const ejs=require("ejs");
-const Listing=require("../PROJECT/models//listing");
+
 const path=require("path");
 const methodOverride=require("method-override");
 const { connected } = require("process");
