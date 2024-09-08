@@ -29,8 +29,8 @@ const listingSchema=new Schema({
     },
     geometry:{
         type: {
-            type: String, // Don't do `{ location: { type: String } }`
-            enum: ['Point'], // 'location.type' must be 'Point'
+            type: String,
+            enum: ['Point'],
             required: true
           },
           coordinates: {
@@ -40,7 +40,6 @@ const listingSchema=new Schema({
     }
 });
 
-//deleting listing
 listingSchema.post("findOneAndDelete",async(listing)=>{
     if(listing){
     await Review.deleteMany({_id:{$in:listing.reviews}});

@@ -28,7 +28,7 @@ module.exports.renderLoginForm=(req,res)=>{
 };
 
 module.exports.login=async(req,res)=>{
-    req.flash("success","Welcome to Back wanderlust!!");
+    req.flash("success","Welcome to Back !!");
     let redirectUrl=res.locals.redirectUrl || "/listings";
     res.redirect(redirectUrl);
 };

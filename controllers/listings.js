@@ -23,13 +23,11 @@ module.exports.createNewListing=async (req,res)=>{
     console.log(response.body.features[0].geometry);
     let url=req.file.path;
     let filename=req.file.filename;
-    console.log(url,"...",filename);
    const newListing=new Listing(req.body.Listing);
    newListing.owner=req.user._id
    newListing.image={url,filename};
    newListing.geometry=response.body.features[0].geometry;
    let savedListing=await newListing.save();
-   console.log(savedListing);
    req.flash("success","New Listing Created!!");
    res.redirect("/listings");
 
@@ -43,7 +41,6 @@ module.exports.show=async (req,res)=>{
     req.flash("error","Listing you Requested for Doest not exit");
     res.redirect("/listings");
   }
-  //console.log(listing);
   res.render("listings/show.ejs",{listing});
 
 };
@@ -58,9 +55,7 @@ module.exports.editListingForm=async(req,res)=>{
           res.redirect("/listings");
         }
         let originalImageUrl=listing.image.url;
-        console.log(originalImageUrl);
         originalImageUrl=originalImageUrl.replace("/upload","/upload/h_300,w_250");
-        console.log(originalImageUrl);
     res.render("listings/edit.ejs",{listing,originalImageUrl});
 };
 
@@ -80,7 +75,6 @@ module.exports.updateListing=async (req,res)=>{
 module.exports.deleteListing=async(req,res)=>{
     let {id}=req.params;
     const deletedListing= await Listing.findByIdAndDelete(id);
-   console.log(deletedListing);
     req.flash("success","Listing is Deleted!!");
     res.redirect("/listings");
 };

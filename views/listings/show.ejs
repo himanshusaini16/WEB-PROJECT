@@ -14,7 +14,7 @@
         <div class="card-body">
           <p class="card-text"><b>Owned By:@</b><i ><b><%=listing.owner.username%></b></i></p>
           <p class="card-text" ><%=listing.description%> </p>
-          <p class="card-text"> &#8377; <%=listing.price%> </p>
+          <p><i class="tax-info">50 &nbsp;<i class="fa-solid fa-heart fa-beat" style="color: #f40101;"></i></i></p>
           <p class="card-text"><%=listing.location%></p>
           <p class="card-text"><%=listing.country%></p>
         </div>
@@ -36,10 +36,6 @@
           <hr>
         <h4>Leave a Review:</h4>
         <form action="/listings/<%=listing._id%>/reviews" method="post" novalidate class="needs-validation">
-          <!-- <div  class="mb-3 mt-3">
-            <label for="rating" class="form-label">Rating:</label>
-            <input  type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range">
-          </div> -->
           <div  class="mb-3 mt-3">
             <label for="rating" class="form-label">Rating:</label>
           <fieldset class="starability-slot">

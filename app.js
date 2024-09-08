@@ -28,6 +28,8 @@ const User=require("./models/user.js");
 const app=express();
 const port = 3000;
 const dbUrl=process.env.ATLASDB_URL;
+// const mongourl="mongodb://127.0.0.1:27017/wanderlust";
+
 
 const store=MongoStore.create({
     mongoUrl:dbUrl,
@@ -84,7 +86,7 @@ app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 
 main().then(()=>{
-    console.log("Connected to WanderLust");
+    console.log("Connected to  DATABASE");
 })
 .catch(()=>{
     console.log("Error");
@@ -93,6 +95,10 @@ main().then(()=>{
 app.listen(port,()=>{
     console.log(`Server is listen to port no ${port}`);
 });
+
+app.get("/",(req,res)=>{
+    res.render("listings/home.ejs");
+})
 
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);

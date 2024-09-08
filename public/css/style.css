@@ -159,3 +159,19 @@ body{
    display: flex;
    align-items: center;
  }
+
+ @media (max-width: 767px) {
+    .card-img-top {
+    }
+    .card-body {
+      padding: 0.5rem; 
+    }
+    .card-title {
+      font-size: 1rem; 
+    }
+    .card-price {
+      font-size: 1rem; 
+    }
+  }
+
+  
