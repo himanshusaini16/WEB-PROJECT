@@ -20,7 +20,7 @@ module.exports.createNewListing=async (req,res)=>{
         limit: 1
       })
         .send()
-    console.log(response.body.features[0].geometry);
+        
     let url=req.file.path;
     let filename=req.file.filename;
    const newListing=new Listing(req.body.Listing);
@@ -47,7 +47,6 @@ module.exports.show=async (req,res)=>{
 
 module.exports.editListingForm=async(req,res)=>{
     let {id}=req.params;
-    
     const listing= await Listing.findById(id);
     if(!listing)
         {
@@ -61,6 +60,11 @@ module.exports.editListingForm=async(req,res)=>{
 
 module.exports.updateListing=async (req,res)=>{
     let {id}=req.params;
+    let response=await geocodingClient.forwardGeocode({
+      query: req.body.Listing.location,
+      limit: 1
+    })
+      .send()
     let listing=await Listing.findByIdAndUpdate(id,{...req.body.Listing});
     if(typeof req.file !=="undefined"){
     let url=req.file.path;
