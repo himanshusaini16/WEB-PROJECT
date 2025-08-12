@@ -16,11 +16,16 @@
             Original Image: <br>
             <img src="<%=originalImageUrl%>" alt="listingimage">
         </div>
-       
         <div class="mb-3">
             <label for="image" class="form-label">Upload New Image</label>
             <input type="file" name="Listing[image]" id="image" class="form-control">
         </div>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Price</label>
+            <input type="text" name="Listing[price]" id="title"   class="form-control" value="<%= listing.price%>" required>
+        </div>
+         
         <div class="row">
         <div class="mb-3 col-md-4">
             <label for="location" class="form-label">Location</label>
