@@ -1,7 +1,7 @@
 const mongoose=require("mongoose");
 const Schema=mongoose.Schema;
 const Review=require("./review.js");
-const { required } = require("joi");
+
 
 
 const listingSchema=new Schema({
@@ -16,6 +16,7 @@ const listingSchema=new Schema({
     },
     location:String,
     country:String,
+    price: Number,
     reviews:[
         {
             type:Schema.Types.ObjectId,

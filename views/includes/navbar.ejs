@@ -49,7 +49,7 @@
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
+      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
       <form class="d-flex search-input" role="search" action="/listings/search" method="get">
         <input class="form-control search-input d-md-none" type="search" placeholder="Search Destination" name="search">
         <button class="btn btn-search d-md-none icon" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -70,7 +70,7 @@
           </form>
         </div>
         <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="/listings/new">Add New Place</a>
+          <a class="nav-link" href="/listings/new">Add New Listing</a>
           <% if(!currUser){ %>
           <a class="nav-link" href="/signup"><b>SignUp</b></a>
           <a class="nav-link" href="/login"><b>Login</b></a>

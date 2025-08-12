@@ -49,8 +49,8 @@
       <div class="tax-switch ">
         <div class="form-check form-switch form-check-reverse">
           <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-          <label class="form-check-label" for="flexSwitchCheckDefault">CLICK TO VIEW LIKES</label>
-        </div>
+          <label class="form-check-label" for="flexSwitchCheckDefault">25% Discount</label>
+        </div>  
       </div>
     </div>
     <div class="container">
@@ -62,12 +62,32 @@
                         <div class="card-img-overlay"></div>
                         <div class="card-body">
                           <h5 class="card-title"><%=listing.title%></h5>
-                          <p><i class="tax-info">50 &nbsp;<i class="fa-solid fa-heart fa-beat" style="color: #f40101;"></i></i></p>
+                        <p class="original-price">₹<%=listing.price%><p class="tax-info">New Price:<%=listing.price - listing.price * 0.25%></p></p>
                         </div>
                       </div>
                 </a>
               <% } %>
     </div> 
     </div>
+
+    <script>
+  document.getElementById("flexSwitchCheckDefault").addEventListener("change", function() {
+    const checked = this.checked;
+    const originalPrices = document.querySelectorAll(".original-price");
+    const discountPrices = document.querySelectorAll(".tax-info");
+
+    originalPrices.forEach((price, index) => {
+      if (checked) {
+        price.style.textDecoration = "line-through";
+        price.style.color = "#f56c6c";
+        discountPrices[index].style.display = "block";
+      } else {
+        price.style.textDecoration = "none";
+        price.style.color = "black";
+        discountPrices[index].style.display = "none";
+      }
+    });
+  });
+</script>
 
 

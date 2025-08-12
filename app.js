@@ -27,12 +27,12 @@ const User=require("./models/user.js");
 
 const app=express();
 const port = 3000;
-const dbUrl=process.env.ATLASDB_URL;
-// const mongourl="mongodb://127.0.0.1:27017/wanderlust";
+// const dbUrl=process.env.ATLASDB_URL;
+const mongourl="mongodb://127.0.0.1:27017/wanderlust";
 
 
 const store=MongoStore.create({
-    mongoUrl:dbUrl,
+    mongoUrl:mongourl,
     crypto: {
         secret:process.env.SECRET,
     },
@@ -75,7 +75,7 @@ app.use((req,res,next)=>{
 });
 
 async function main() {
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(mongourl);
 }
 
 app.set("view engine","ejs");
@@ -88,17 +88,18 @@ app.use(express.static(path.join(__dirname,"/public")));
 main().then(()=>{
     console.log("Connected to  DATABASE");
 })
-.catch(()=>{
-    console.log("Error");
+.catch((error)=>{
+    console.log(error);
 })
 
 app.listen(port,()=>{
     console.log(`Server is listen to port no ${port}`);
 });
 
-app.get("/",(req,res)=>{
-    res.render("listings/home.ejs");
-})
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
 
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
