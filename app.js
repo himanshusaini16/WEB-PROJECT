@@ -27,12 +27,14 @@ const User=require("./models/user.js");
 
 const app=express();
 const port = 3000;
-// const dbUrl=process.env.ATLASDB_URL;
-const mongourl="mongodb://127.0.0.1:27017/wanderlust";
+const dbUrl=process.env.ATLASDB_URL;
+//const mongourl="mongodb://127.0.0.1:27017/wanderlust";
+
+
 
 
 const store=MongoStore.create({
-    mongoUrl:mongourl,
+    mongoUrl:dbUrl,
     crypto: {
         secret:process.env.SECRET,
     },
@@ -75,7 +77,7 @@ app.use((req,res,next)=>{
 });
 
 async function main() {
-    await mongoose.connect(mongourl);
+    await mongoose.connect(dbUrl);
 }
 
 app.set("view engine","ejs");
